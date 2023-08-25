@@ -1,0 +1,15 @@
+*Props
+
+- Props là một object, funciton...(tất cả) được truyền vào trong một components, mỗi components sẽ nhận vào props và trả về react element.
+- Props cho phép chúng ta giao tiếp giữa các components với nhau bằng cách truyền tham số qua lại giữa các components.
+- Khi một components cha truyền cho components con một props thì components con chỉ có thể đọc và không có quyền chỉnh 
+sửa nó bên phía components cha.
+- Cách truyền một props cũng giống như cách mà bạn thêm một attributes cho một element HTML.
+
+*State
+
+- State giống như một kho lưu trữ dữ liệu cho các component trong ReactJS. Nó chủ yếu được sử dụng để cập nhật component khi người dùng thực hiện một số hành động như nhấp vào nút,
+nhập một số văn bản, nhấn một số phím, v.v.
+- State là thành phần của component, trong khi các props lại được truyền giá trị từ bên ngoài vào component
+- Chúng ta không nên cập nhật state bằng cách sử dụng trực tiếp this.state mà luôn sử dụng setState để cập nhật state của các đối tượng
+- Bất cứ khi nào dữ liệu thay đổi trong một component, State có thể được sử dụng.	

@@ -1,0 +1,43 @@
+Bài Thu Hoạch
+
+1. API là gì?
+	API là viết tắt của  Application and Programming Interface (Giao diện ứng dụng và lập trình). 
+Hơn nữa, API cho phép một phần mềm nói chuyện với một số phần mềm khác.
+	Có rất nhiều loại API khác nhau, ví dụ: API Facebook, API Twitter, v.v. Tuy nhiên, khi mọi người nói về các API này, 
+hầu hết thời gian họ đều đề cập đến REST API. API có thể sẽ được trả về dữ liệu mà người dùng cần cho chính ứng dụng của bạn,
+với những kiểu dữ liệu được dùng phổ biến như JSON hoặc XML. 
+
+	
+	*REST:
+		là một định nghĩa kiểu kiến trúc (Architecture Style) được áp dụng cho các ứng dụng được kết nối mạng (Networked Applications).
+Nó tồn tại như một loạt ràng buộc (Constraints) được áp dụng cho việc triển khai các thành phần mạng, cho phép ngữ nghĩa giao diện
+thống nhất, thay vì các triển khai và cú pháp dành riêng cho ứng dung.
+
+	*RESTfull API:
+		RESTful API là một tiêu chuẩn dùng trong việc thiết kế API cho các ứng dụng web (thiết kế Web services) để tiện cho việc quản lý các resource. 
+Nó chú trọng vào tài nguyên hệ thống (tệp văn bản, ảnh, âm thanh, video, hoặc dữ liệu động…), bao gồm các trạng thái tài nguyên được định dạng và được truyền tải qua HTTP.
+
+		REST hoạt động chủ yếu dựa vào giao thức HTTP. Các hoạt động cơ bản nêu trên sẽ sử dụng những phương thức HTTP riêng.
+
+		GET (SELECT): Trả về một Resource hoặc một danh sách Resource.
+		POST (CREATE): Tạo mới một Resource.
+		PUT (UPDATE): Cập nhật thông tin cho Resource.
+		DELETE (DELETE): Xoá một Resource.
+
+		Khi chúng ta biết trạng thái của api thì chúng ta sẽ có các bước xử lí các công việc khác nhau. 
+Các trạng thái này là do giao thức http tạo ra. Các bạn nên nhớ một số trạng thái api hay gặp như sau:
+
+200 OK – Trả về thành công cho những phương thức GET, PUT, PATCH hoặc DELETE.
+201 Created – Trả về khi một Resource vừa được tạo thành công.
+204 No Content – Trả về khi Resource xoá thành công.
+304 Not Modified – Client có thể sử dụng dữ liệu cache.
+400 Bad Request – Request không hợp lệ
+401 Unauthorized – Request cần có auth.
+403 Forbidden – bị từ chối không cho phép.
+404 Not Found – Không tìm thấy resource từ URI
+405 Method Not Allowed – Phương thức không cho phép với user hiện tại.
+410 Gone – Resource không còn tồn tại, Version cũ đã không còn hỗ trợ.
+415 Unsupported Media Type – Không hỗ trợ kiểu Resource này.
+422 Unprocessable Entity – Dữ liệu không được xác thực
+429 Too Many Requests – Request bị từ chối do bị giới hạn
+.....

@@ -1,0 +1,24 @@
+.dashboard-button button {
+    width: 80px;
+    height: 40px;
+    border-radius: 7px;
+}
+
+.dashboard-button button:hover {
+    background-color: aqua !important;
+}
+
+.dashboard-button button:active {
+    background-color: rgb(255, 182, 193) !important;
+}
+
+.dashboard-div {
+    display: flex;
+    margin-top: 15px;
+}
+
+.dashboard-category-detail {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}

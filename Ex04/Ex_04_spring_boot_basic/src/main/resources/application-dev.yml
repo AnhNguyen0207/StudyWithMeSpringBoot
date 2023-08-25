@@ -1,0 +1,5 @@
+my:
+  moneyAtm: 2500000
+logging:
+  file: log/file.log
+

@@ -1,0 +1,85 @@
+*Message Queue
+	- Có thể hiểu message queue là một hộp thư, cho phép các thành phần/service trong một hệ thống
+(hoặc nhiều hệ thống), gửi thông tin cho nhau.
+	- Nó thực hiện việc lấy message theo cơ chế FIFO (First In First Out), vào trước thì ra trước.
+	- 1 hệ thống sử dụng message queue thường có những thành phần sau:
+		+ Message: thông tin được gửi đi (có thể là text, binary hoặc json).
+		+ Mesage Queue: Nơi chứa những message này, cho phép producer và consumer có thể trao đổi với nhau.
+		+ Producer: Chương trình/service tạo ra thông tin, đưa thông tin vào message queue.
+		+ Consumer: Chương trình/service nhận message từ message queue và xử lý.
+		+ Một chương trình/service có thể vừa là producer, vừa là consumer.
+
+	- Trong các hệ thống dùng kiến trúc microservice, ta sử dụng message queue để giúp các service liên hệ với nhau một cách bất đồng bộ. 
+Service A làm xong việc có thể gửi message queue để service B biết mà xử lý, không cần phải chờ service B làm xong.
+
+	- Trong thực tế message queue, giải quyết được khá nhiều vấn đề hóc búa trong hệ thống.
+
+		+ Đảm bảo duration/recovery: Do mesage được lưu trong queue, khi 1 service đang xử lý nhưng bị crash hoặc lỗi,
+		ta không lo bị mát dữ liệu, vì có thể lấy message từ trong queue ra và chạy lại. Trong hệ thống có nhiều consumer,
+		nếu 1, 2 consumer bị crash cũng không làm sụp toàn hệ thống.
+
+		+ Phân tán hệ thống: Giúp phân tách hệ thống thành nhiều service nhỏ hơn, mỗi service chỉ xử lý 1 chức năng nhất định.
+
+		+ Hỗ trợ rate limit, batching:  Trong nhiều trường hợp, năng lực xử lý hệ thống có hạn (chỉ có thể xử lý 300 đơn hàng/s). 
+		Với message queue, ta có thể dần dần lấy đơn hàng trong queue ra xử lý, không sợ thất lại. 
+		Hoặc thay vì mỗi lần gửi email mất thời gian lâu, ta có thể đợi message queue có yêu cầu gửi 200 email rồi gửi luôn 1 lượt.
+	
+		+ Dễ scaling hệ thống: Vào giờ cao điểm, nhiều truy vấn, ta có thể tăng số lượng consumer lên để xử lý được nhiều messege hơn. 
+		Khi không cần ta có thể giảm lại.
+
+*RabbitMQ
+	RabbitMQ được biết đến là một Message broker sử dụng giao thức Advanced message queue protocol - AMQP hay chính là hàng quản lý hàng đợi message. 
+Nói một cách dễ hiểu, RabbitMQ giống như một người vận chuyển message trung gian hay quản lý các queue.
+
+	- Cơ chế hoạt động:
+	  + Để hiểu RabbitMQ một cách đơn giản, bạn có thể tưởng tượng nó như một cái bưu điện. Theo cách gọi của RabbitMQ, site A sẽ là Producer hay là người gửi thông điệp đi, 
+còn các site khác chính là Consumer tức là người sẽ nhận các thông điệp được gửi từ site A. Khi đó, Producer sẽ kết nối tới Message broker thực hiện nhiệm vụ đẩy Message tới Consumer thông qua hệ thống Message broker.
+
+	  + Một Message broker sẽ gồm 2 thành phần là exchange và queue. Trong đó, exchange có nhiều loại, việc bạn chọn các loại exchange khác nhau sẽ tạo ra những cách đối xử khác nhau trên Message broker. 
+Mỗi một exchange sẽ được liên kết với một queue nào đó.
+
+	  + Các thành phần của RabbitMQ sẽ có nhiệm vụ như:
+		1. Producer sẽ gửi tin đến máy chủ RabbitMQ.
+		2. Exchange thực hiện phân phối tin theo các kiểu: Topic, Direct, Fanout, Headers.
+		3. Queue được sử dụng để lưu trữ các bản tin đã được gửi tới.
+		4. Consumer lấy bản tin về từ queue.
+	  + Điểm đặc biệt trong RabbitMQ là producer, consumer và broker không hề phụ thuộc vào cùng một host. 
+Một ứng dụng có thể song song vừa là producer cũng vừa là consumer.
+
+*Kafka 
+	Là một hệ thống message theo cơ chế Pub-Sub. Nó cho phép các nhà sản xuất (gọi là producer) viết các message vào Kafka
+mà một, hoặc nhiều người tiêu dùng (gọi là consumer) có thể đọc, xử lý được những message đó.
+	
+	- Cơ chế hoạt động:
+	
+		+ Các message được gửi tới Kafka theo Topic, các Topic giống như kênh lưu trữ message từ Producer gửi đến Kafka.
+Consumer đăng kí một hoặc nhiều Topic để tiêu thụ message đó.
+		+ Kafka có thời gian lưu giữ, vì vậy nó sẽ lưu trữ message của bạn theo thời gian hoặc kich thước bạn cấu hình
+và có thể chỉ định gửi theo topic.
+		+ Đa phần topic trong Kafka có kích thước rất lớn vì vậy, bạn không nên lưu trữ toàn bộ dữ liệu của topic vào 1 node.
+Nguồn dữ liệu này nên phân chia rõ ràng thành nhiều Partition sẽ cho phép bạn thực hiện subcribe song song với topic cụ thể bằng 
+biện pháp phân chia dữ liệu có trong 1 topic cụ thể. Mỗi 1 partition đều sẽ được đặt trên máy riêng biệt, và cho phép nhiều consumer
+có thể đọc dữ liệu tử một topic diễn ra song song.
+
+		+ Các thành phần trong Kafka
+			1. Producer: Kafka sẽ thực hiện phân loại, lưu message dựa theo topic sử dụng producer để thực hiện publish message vào các topic. 
+Khi đó, dữ liệu sẽ được gửi đến partition của topic được lưu trữ trên Broker
+
+			2. Consumer: Các dữ liệu khi được truyền vào trong Kafka dựa theo topic ngay khi cần truyền dữ liệu cho các ứng dụng khác nhau. 
+Khi đó, sẽ tạo ra những topic khác nhau. 
+
+			3. Partition: Vị trí này là nơi dữ liệu xuất hiện dành cho một topic đã được lưu trữ. Topic thường sẽ bao gồm 1 hoặc nhiều partition. 
+Khi đó, ở mỗi partition thì dữ liệu sẽ được lưu trữ một cách cố định và được gán cho một ID gọi là offset. Với một Kafka cluster thì một partition thường có thể sao chép ra nhiều bản khác nhau. 
+Trong số đó, bản leader sẽ có nhiệm vụ đọc dữ liệu và những bản còn lại được gọi là follower. Nếu như bản leader này bị lỗi thì bản follower còn lại sẽ được làm leader thay thế. 
+Trường hợp nếu như bạn muốn dùng nhiều consumer song song dữ liệu của một topic thì topic này buộc phải có nhiều partition. 
+
+			4. Broker: Kafka cluster được xem là một set server và mỗi set này được gọi là 1 broker
+			5. Zookeeper: Được sử dụng để bố trí cũng như quản lý các broker
+
+*So sánh RabbitMQ vs Kafka
+	- Thay vì đặt thông điệp trong hàng đợi FIFO và theo dõi trạng thái của thông điệp đó trong hàng đợi như Rabbit, Kafka chỉ gán nó vào log
+	- giả sử invoice-service cần phải được scale-out lên 3 instance vì nó không thể theo kịp với tốc độ tăng tiến của số lượng thông điệp. 
+Với RabbitMQ, ta đơn giản triển khai thêm hai ứng dụng invoice-service tiêu thụ từ hàng đợi. Nhưng với Kafka, nó không hỗ trợ Consumer cạnh tranh trên cùng một phân vùng, chúng ta sẽ phải sử dụng nhiều phân vùng của một Topic. 
+Vì vậy, nếu chúng ta cần ba Consumer cho invoice-service, ta cần ít nhất ba phân vùng
+	- RabbitMQ duy trì trật tự thông điệp trong toàn bộ hàng đợi nhưng không có cách nào để duy trì thứ tự đó trong quá trình xử lý song song của hàng đợi đó. 
+Kafka không thể cung cấp thứ tự thông điệp của toàn bộ Topic (trong các phân vùng khác nhau), nhưng nó cung cấp thứ tự ở cấp phân vùng.

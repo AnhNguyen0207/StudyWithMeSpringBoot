@@ -1,0 +1,89 @@
+Nguyễn Đức Anh
+Mail: anhnguyen02072000@gmail.com
+BÁO CÁO THU HOẠCH
+1.	Sql là gì?
+	SQL là viết tắt của Structured Query Language (Ngôn ngữ truy vấn có cấu trúc) và nó là một ngôn ngữ máy tính tiêu chuẩn ANSI để truy cập và thao tác với các hệ thống cơ sở dữ liệu. 
+Nó được sử dụng để quản lý dữ liệu trong hệ quản trị cơ sở dữ liệu quan hệ, được lưu trữ dữ liệu dưới dạng bảng và mối quan hệ giữa dữ liệu cũng được lưu trữ dưới dạng bảng. 
+Các câu lệnh SQL được sử dụng để truy xuất và cập nhật dữ liệu trong cơ sở dữ liệu.
+
+2.	NoSql là gì?
+	Cơ sở dữ liệu NoSQL là một Hệ thống quản lý dữ liệu không quan hệ (non-relational DManagement System) có lược đồ (schema) linh hoạt. Nó dễ mở rộng. 
+Mục đích chính của việc sử dụng cơ sở dữ liệu NoSQL là dành cho các kho dữ liệu phân tán với nhu cầu lưu trữ dữ liệu lớn.
+
+3.	So sánh Sql với NoSql 
+Sql	
+Mô hình quan hệ chuẩn hóa dữ liệu vào bảng được hình thành từ hàng và cột. Sơ đồ quy định rõ ràng bảng, hàng, cột, chỉ mục, mối quan hệ giữa các bảng và các thành tố cơ sở dữ liệu khác. 
+Cơ sở dữ liệu sẽ thực thi tính toàn vẹn tham chiếu trong mối quan hệ giữa các bảng.
+
+NoSql	
+	Kiểu Document: JSON documents
+	Kiểu Key-value: key-value pairs
+	Kiểu column: bảng với hàng và cột thay đổi (dynamic)
+	Graph: nodes và cạnh
+
+4.	Join, Function, Stored Procedure, Transaction
+
+*Các loại Join
+-	Inner join: là kiểu join trả về tất cả bản ghi thoả mãn điều kiện chung của cả 2 bảng.
+-	Left join : là kiểu join trả về tất cả bản ghi từ bảng bên trái và các bản ghi phù hợp từ bảng bên phải.
+-	Right join: là kiểu join trả về tất cả bản ghi từ bảng bên phải và các bản ghi phù hợp từ bảng bên trái.
+-	Full join: là kiểu trả về tất cả bản ghi từ cả 2 bảng kết hợp lại, là kết hợp kết quả của 2 loại Left join và Right Join.
+-	Outer join: là kiểu trả về các bản ghi không phù hợp từ cả 2 bảng.
+
+*Function
+	Là một đối tượng trong csdl bao gồm hay 1 tập các câu lệnh được nhóm lại với nhau và được tạo ra với mục đích sử dụng lại.
+Vd: 
+CREATE FUNCTION fuNhanvien
+( @nhanvien_id INT )
+
+RETURNS VARCHAR(50)
+
+AS
+
+BEGIN
+
+DECLARE @nhanvien_name VARCHAR(50);
+
+IF @nhanvien_id < 10
+SET @nhanvien_name = 'Smith';
+ELSE
+SET @nhanvien_name = 'Lawrence';
+
+RETURN @nhanvien_name;
+
+END
+
+* Stored Procedure
+	Stored procedure là tập hợp một hoặc nhiều câu lệnh T-SQL thành một nhóm đơn vị xử lý logic và được lưu trữ trên Database Server. 
+Khi một câu lệnh gọi chạy stored procedure lần đầu tiên thì SQL Server sẽ chạy nó và lưu trữ vào bộ nhớ đệm, gọi là plan cache, những lần tiếp theo SQL Server sẽ sử dụng lại plan cache nên sẽ cho tốc độ xử lý tối ưu.
+
+Vd:
+ 
+-	Mỗi lần sử dụng chỉ cần viết hàm: call selectTop10() là chúng ta có thể lấy dc 10 sản phẩm có số lượng bán ra nhiều nhất, giúp chúng ta truy vấn dữ liệu được nhanh hơn.
+
+* Transaction
+	Có thể hiểu Transaction là một tiến trình xử lý có xác định điểm đầu và điểm cuối, được chia nhỏ thành các operation (phép thực thi) ,
+ tiến trình được thực thi một cách tuần tự và độc lập các operation đó theo nguyên tắc hoặc tất cả đều thành công hoặc một operation thất bại thì toàn bộ tiến trình thất bại. 
+Nếu việc thực thi một operation nào đó bị fail đồng nghĩa với việc dữ liệu phải rollback về trạng thái ban đầu.
+
+
+
+5. 	Index
+	
+	Một số database là một cấu trúc dữ liệu để cải thiện tốc độ của các hoạt động trong một bảng. Index có thể được tạo ra bằng cách sử dụng một hoặc nhiều cột, 
+cung cấp cơ sở cho việc tra cứu ngẫu nhiên cả hai nhanh chóng và hiệu quả
+	Các lệnh INSERT và UPDATE tốn nhiều thời gian hơn trên các bảng có index trong khi các lệnh SELECT trở nên nhanh hơn trên các bảng này. 
+Lý do là vì, trong khi chèn và cập nhật, database cũng phải cần chèn hoặc cập nhật các giá trị index.
+ 
+	- Có 2 loại là Simple Index và Unique Index
+		+ Unique Index là kiểu index dùng để đảm bảo tính duy nhất trong các cột được tạo index. Nếu index loại này được tạo dựa trên nhiều cột,
+thì tính duy nhất của giá trị được tính trên tất cả các cột đó, không chỉ riêng rẽ từng cột.
+
+		+ Simple index cho phép tồn tại bản sao các giá trị trong một bảng.
+
+6.	Partition
+	
+	Partitioning theo đúng như tên của nó là việc phân chia một table thành những phần nhỏ theo một logic nhất định, được phân biệt băng key,
+key này thường là tên cloumn trong bảng
+	vd:
+CREATE TABLE table_name (column_id INT, column_01 DECIMAL(7,2), column_date DATE) ENGINE=INNODB PARTITION BY HASH( MONTH(column_date) ) PARTITIONS 6;

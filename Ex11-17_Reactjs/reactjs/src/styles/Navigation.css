@@ -1,0 +1,33 @@
+.navigation {
+    display: flex;
+    padding-top: 10px;
+    background-color: rgb(37, 218, 67);
+    
+}
+
+.navigation-text {
+    color: red;
+    text-align: center;
+    width: 50%;
+    font-size: 30px;
+}
+
+.navigation-button {
+    width: 50%;
+    text-align: center;
+    height: 50px;
+}
+
+.navigation-button button {
+    width: 80px;
+    height: 40px;
+    border-radius: 7px;
+}
+
+.navigation-button button:hover {
+    background-color: aqua !important;
+}
+
+.navigation-button button:active {
+    background-color: rgb(255, 182, 193) !important;
+}

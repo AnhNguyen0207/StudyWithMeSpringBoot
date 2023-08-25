@@ -1,0 +1,53 @@
+Nguyễn Đức Anh
+Mail: anhnguyen02072000@gmail.com
+BÁO CÁO THU HOẠCH
+1.	Framework là gì?
+Một framework, hoặc một phần mềm framework, nó là 1 nền tảng để phát triển các ứng dụng phền mềm. Nó cung cấp một nền tảng mà các nhà phát triển phần mềm có thể xây dựng các chương trình cho một nền tảng cụ thể.
+Framework là những công cụ và thư viện mà các nhà phát triển khác đã tạo để đạt được một mục tiêu kỹ thuật cụ thể hoặc để làm cho việc phát triển bằng một ngôn ngữ cụ thể dễ dàng hơn.
+Ví dụ, một framework có thể bao gồm các classes và chức năng được xác định từ trước để xử lý đầu vào, quản lý thiết bị phần cứng và tương tác với phần mềm hệ thống. Điều này làm tinh gọn lại quá trình phát triển vì các lập trình viên không cần phải làm lại từ đầu mỗi khi họ muốn phát triển một ứng dụng mới.
+2.	Spring framework là gì, có tác dụng gì?
+Sping framework là một khung mã nguồn mở có thể sử dụng để phát triển các ứng dụng java một cách dễ dàng và với tốc độ nhanh chóng. Nói cách khác Spring xử lý cơ sở hạ tầng để bạn có thể tập trung hơn vào việc phát triển ứng dụng của mình.
+Ví dụ, Spring cung cấp các thư viện java có sẵn, giúp chúng ta không mất thời gian tự đi cấu hình thư viện…
+Tác dụng của Spring framework:
+-	Giúp lập trình viên java có thể tập trung phát triển phần mềm của họ hơn.
+-	Giảm thiểu thời gian code, thời gian cấu hình…
+-	Giúp các lập trình viên giao tiếp với nhau dễ dàng hơn vì cùng theo 1 khung nhất đinh.
+-	Hộ trợ nhiều tiện ích giúp lập trình viên dễ dàng lập trình hơn.
+…
+3.	Ngoài Spring thì java còn có các framework nào khác?
+-	JSF – JavaServer Faces : JavaServer Faces được Oracle hỗ trợ và do đó, nó đi kèm với các tài liệu rất chuyên sâu.
+-	Strus : là một framework có mã nguồn mở miễn phí, được sử dụng để tạo các ứng dụng Java đẹp, có thể hoạt động trên MVC
+-	Hibernate: là một ORM Framework, được biết đến là một lựa chọn chất lượng cao cho những vấn đề về database.
+-	Vaadin : là một mã nguồn mở, được tảo bởi Apache Software Foundation, Đây là một Java Framework rất mạnh mẽ, hữu ích.
+…
+
+4.Spring boot, Spring data, Spring cloud...
+
+	*Spring boot:
+		Là 1 dự án phát triển bởi JAV (ngôn ngữ java) trong hệ sinh thái Spring framework. Nó giúp cho các lập trình viên chúng ta đơn giản hoá 
+quá trình lập trình một ứng dụng với Spring, chỉ tập trung vào việc phát triển business cho ứng dụng
+
+	- Tạo các ứng dụng Spring độc lập
+	- Nhúng trực tiếp Tomcat, Jetty hoặc Undertow (không cần phải deploy ra file WAR)
+	- Các starter dependency giúp việc cấu hình Maven đơn giản hơn
+	- Tự động cấu hình Spring khi cần thiết
+	- Không sinh code cấu hình và không yêu cầu phải cấu hình bằng XML 
+	
+	*Spring data:
+		Cung cấp mô hinh lập trình dựa trên Spring quen thuộc và nhắt quán để truy cập dữ liệu trong khi vẫn giữ được các đặc điểm đặc biệt của kho cơ sở dữ liệu.
+Nó giúp bạn dễ dàng sử dụng các công nghệ truy cập dữ liệu, cơ sở dữ liệu quan hệ và không quan hệ
+
+	- Kho lưu trữ mạnh mẽ và các bản tóm tắt ánh xạ đói tượng tuỳ chỉnh
+	- Truy vấn động dẫn xuất từ tên phương thức kho lưu trữ
+	- Các lớp cơ sở miền triển khai cung cấp các thuộc tính cơ bản
+	- Hỗ trợ kiểm toám minh bạch
+	- Khả năng tích hợp mã kho lưu trữ tuỳ chỉnh
+	- Tích hợp Spring dễ dàng thông qua JavaConfig và không gian tên XML tuỳ chỉnh
+	- Tích hợp nâng cao với bộ điều khiển SpringMVC
+	- Hỗ trợ thử nghiệm cho sự bền bỉ giữa các cửa hàng
+
+	*Spring cloud
+		Cung cấp các công cụ để các nhà phát triển nhanh chóng xây dựng một số mẫu phổ biến trong các hệ thống phân tán.
+Các nhà phát triển có thể nhanh chóng chuẩn bị các dịch vụ và ứng dụng triển khai các mẫu đó. Chúng sẽ hoạt động tốt trong bất kì môi trường phân tán nào.
+Bao gồm máy tính xách tay của chính nhà phát triển, trung tâm dữ liệu lớn, và các nền tảng được quản lý như Cloud Foundry.
+		

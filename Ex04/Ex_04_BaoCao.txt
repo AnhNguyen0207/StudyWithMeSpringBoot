@@ -1,0 +1,20 @@
+Nguyễn Đức Anh
+Mail: anhnguyen02072000@gmail.com
+BÁO CÁO THU HOẠCH
+1.	Tigtly Coupled
+	Khái niệm: Tigtly Coupled (liên kết chặt chẽ) ám chỉ sự liên kết chặt chẽ giữa 2 class với nhau, khi 1 class gọi tới đối tượng của 1 class khác ra để thực thi nếu muốn thay đổi logic hoặc code, 
+thì ta phải thay đổi cả 2 class. Việc này cho thấy sự liên kết giữa 2 class khá là chặt chẽ.
+
+2.	Loosely Coupled
+	Khái niệm : Loosely Coupled giúp giảm bớt sự liên kết chặt chẽ giữa 2 class
+Ví dụ: trong java chúng ta sẽ thêm 1 lớp interface. Đó là cách class 1 sẽ chỉ phụ thuộc vào interface đó, chứ không phải implementation thực tế của Class2, 
+do đó sẽ giảm thiểu sự phụ thuộc trực tiếp giữa 2 class với nhau.
+
+3.	Dependency injection
+	Trong java, trước khi ta có thể sử dụng method của class khác, ta phải khởi tạo một object của class đấy (Hay A cần phải tạo 1 thực thể của B). 
+Vậy ta có thể hiểu, việc chuyển giao nhiệm vụ khởi tạo object đó cho một ai khác và trực tiếp sử dụng các dependency đó được gọi là dependency injection.
+
+
+4. File cấu hình và profiles
+- Profile là một trong những khái niệm cốt lỗi của Spring cho phép chúng ta ánh xạ các bean đến các môi trường khác nhau. 
+  Hiểu đơn giản là một bean chỉ được khởi tạo và sử dụng trong một môi trường nhất định ví dụ như dev, test, production.
